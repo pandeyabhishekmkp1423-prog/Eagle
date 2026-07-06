@@ -10,7 +10,7 @@ export default function Logo({ className = '', light = false }: LogoProps) {
     <div className={`flex items-center gap-3 ${className}`} id="brand-logo">
       {/* Abstract Eagle + Tiger Crest Vector */}
       <div className="relative flex h-11 w-11 items-center justify-center">
-        <img src="/assets/et.png" alt="Eagle Tiger Fabb & Infra Logo" className="h-11 w-11 object-contain" />
+        <img src="/et.png" alt="Eagle Tiger Fabb & Infra Logo" className="h-11 w-11 object-contain" />
       </div>
 
       {/* Corporate Brand Typography */}
