@@ -32,7 +32,7 @@ export default function WhyChooseSection() {
             return (
               <div
                 key={index}
-                className="group flex flex-col gap-3 rounded-2xl border border-gray-light bg-white p-4 transition-all hover:border-gold/30 hover:shadow-lg md:flex-row md:gap-5 md:p-6"
+                className="premium-glow-card group flex flex-col gap-3 rounded-2xl border border-gray-light bg-white p-4 transition-all hover:border-gold/30 hover:shadow-lg md:flex-row md:gap-5 md:p-6"
                 id={`why-choose-card-${index}`}
               >
                 {/* Icon Circle */}

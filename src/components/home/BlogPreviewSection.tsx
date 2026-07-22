@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, User, Clock } from 'lucide-react';
-import { BLOG_POSTS } from '../../data';
+import { useBlogPosts } from '../../hooks/useBlogPosts';
 
 export default function BlogPreviewSection() {
+  const { posts } = useBlogPosts();
   // Grab latest 3 posts
-  const latestPosts = BLOG_POSTS.slice(0, 3);
+  const latestPosts = posts.slice(0, 3);
 
   return (
     <section className="py-24 bg-white" id="home-blog-preview">
@@ -27,7 +28,7 @@ export default function BlogPreviewSection() {
           {latestPosts.map((post) => (
             <div
               key={post.id}
-              className="group flex flex-col rounded-2xl bg-surface border border-gray-light overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              className="premium-glow-card group flex flex-col rounded-2xl bg-surface border border-gray-light overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               id={`blog-card-${post.id}`}
             >
               {/* Cover Image */}

@@ -1,0 +1,15 @@
+# Clean URLs for the React Router (BrowserRouter) single-page app.
+# Deploy this alongside the built dist/ files and the api/ folder in public_html.
+
+RewriteEngine On
+
+# Serve real files and directories directly (JS/CSS bundles, images, api/*.php).
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Never rewrite API requests -- they must hit the PHP scripts in api/.
+RewriteRule ^api/ - [L]
+
+# Everything else is a client-side route: hand it to index.html.
+RewriteRule ^ index.html [L]

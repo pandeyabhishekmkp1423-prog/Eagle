@@ -22,41 +22,46 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-2 gap-3 md:gap-8 lg:grid-cols-3">
-          {SERVICES.map((service) => (
-            <div
-              key={service.id}
-              className="group relative flex flex-col gap-4 overflow-hidden rounded-sm border border-gray-light border-l-[3px] border-l-gold bg-white p-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:bg-primary hover:shadow-xl md:gap-6 md:border-l-[6px] md:p-8"
-              id={`service-card-${service.id}`}
-            >
-              {/* Gold light burst on hover */}
-              <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-bl from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              {/* Icon Container */}
-              <div className="flex h-11 w-11 items-center justify-center self-start rounded-sm border border-gray-light/50 bg-surface p-3 text-primary shadow-sm transition-all duration-500 group-hover:border-transparent group-hover:bg-gold group-hover:text-primary md:h-14 md:w-14 md:p-4">
-                <IconRenderer name={service.icon} className="h-5 w-5 md:h-6 md:w-6" />
-              </div>
-
-              {/* Text content */}
-              <div className="flex flex-col gap-2.5 text-left">
-                <h3 className="font-display text-xs font-bold uppercase leading-snug tracking-wide text-primary transition-colors duration-500 group-hover:text-white sm:text-sm md:text-lg">
-                  {service.title}
-                </h3>
-                <p className="line-clamp-4 font-sans text-[10px] font-light leading-4 text-gray-medium transition-colors duration-500 group-hover:text-gray-300 sm:text-xs md:text-sm md:leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Read More button linked to services page */}
-              <Link
-                to={`/services#${service.id}`}
-                className="mt-auto inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.1em] text-primary transition-colors duration-500 group-hover:text-gold focus:outline-none sm:text-[10px] md:gap-1.5 md:text-xs md:tracking-widest"
+          {SERVICES.map((service, index) => {
+            const isLast = index === SERVICES.length - 1;
+            return (
+              <div
+                key={service.id}
+                className={`group relative flex flex-col gap-4 overflow-hidden rounded-sm border border-gray-light border-l-[3px] border-l-gold bg-white p-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:bg-primary hover:shadow-xl md:gap-6 md:border-l-[6px] md:p-8 ${
+                  isLast ? 'col-span-2 sm:flex-row sm:items-center sm:gap-6 lg:col-span-3' : ''
+                }`}
+                id={`service-card-${service.id}`}
               >
-                <span className="md:hidden">Explore</span>
-                <span className="hidden md:inline">Explore Technical Specs</span>
-                <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform duration-500" />
-              </Link>
-            </div>
-          ))}
+                {/* Gold light burst on hover */}
+                <div className="absolute top-0 right-0 h-24 w-24 bg-gradient-to-bl from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                {/* Icon Container */}
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center self-start rounded-sm border border-gray-light/50 bg-surface p-3 text-primary shadow-sm transition-all duration-500 group-hover:border-transparent group-hover:bg-gold group-hover:text-primary md:h-14 md:w-14 md:p-4">
+                  <IconRenderer name={service.icon} className="h-5 w-5 md:h-6 md:w-6" />
+                </div>
+
+                {/* Text content */}
+                <div className="flex flex-col gap-2.5 text-left">
+                  <h3 className="font-display text-xs font-bold uppercase leading-snug tracking-wide text-primary transition-colors duration-500 group-hover:text-white sm:text-sm md:text-lg">
+                    {service.title}
+                  </h3>
+                  <p className={`line-clamp-4 font-sans text-[10px] font-light leading-4 text-gray-medium transition-colors duration-500 group-hover:text-gray-300 sm:text-xs md:text-sm md:leading-relaxed ${isLast ? 'sm:max-w-md' : ''}`}>
+                    {service.description}
+                  </p>
+                </div>
+
+                {/* Read More button linked to services page */}
+                <Link
+                  to={`/services#${service.id}`}
+                  className={`mt-auto inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.1em] text-primary transition-colors duration-500 group-hover:text-gold focus:outline-none sm:text-[10px] md:gap-1.5 md:text-xs md:tracking-widest ${isLast ? 'sm:ml-auto sm:mt-0' : ''}`}
+                >
+                  <span className="md:hidden">Explore</span>
+                  <span className="hidden md:inline">Explore Technical Specs</span>
+                  <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1.5 transition-transform duration-500" />
+                </Link>
+              </div>
+            );
+          })}
         </div>
 
         {/* Bottom CTA block */}

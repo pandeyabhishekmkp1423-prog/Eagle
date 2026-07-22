@@ -44,10 +44,12 @@ export default function ProjectsSection() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((proj) => (
+          {filteredProjects.map((proj, index) => (
             <div
               key={proj.id}
-              className="group flex flex-col rounded-sm bg-white border border-gray-light overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-b-4 border-b-primary hover:border-b-gold"
+              className={`premium-glow-card group flex flex-col rounded-sm bg-white border border-gray-light overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-b-4 border-b-primary hover:border-b-gold ${
+                index === filteredProjects.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''
+              }`}
               id={`project-card-${proj.id}`}
             >
               {/* Cover Image & Status Tag */}

@@ -222,7 +222,7 @@
   box-shadow: 0 8px 30px rgba(6, 19, 43, 0.08);
 }
 
-#main-navigation a:not([href="#/"]) { white-space: nowrap; }
+#main-navigation a:not([href="/"]) { white-space: nowrap; }
 #mobile-nav-drawer {
   visibility: hidden;
   box-shadow: none;
@@ -351,4 +351,47 @@
     scroll-behavior: auto !important;
     transition-duration: .01ms !important;
   }
+}
+
+/* Blog rich-text typography: shared by the admin editor (RichTextEditor) and
+   the public blog post renderer, so what the admin sees while writing is
+   exactly what visitors see. */
+.prose-blog h1, .prose-blog h2, .prose-blog h3,
+.prose-blog h4, .prose-blog h5, .prose-blog h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.25;
+  margin: 1.1em 0 0.5em;
+}
+.prose-blog h1 { font-size: 1.75em; }
+.prose-blog h2 { font-size: 1.5em; }
+.prose-blog h3 { font-size: 1.3em; }
+.prose-blog h4 { font-size: 1.15em; }
+.prose-blog h5 { font-size: 1.05em; }
+.prose-blog h6 { font-size: 0.95em; text-transform: uppercase; letter-spacing: 0.04em; }
+.prose-blog p { margin: 0 0 1em; }
+.prose-blog ul, .prose-blog ol { margin: 0 0 1em; padding-left: 1.4em; }
+.prose-blog ul { list-style: disc; }
+.prose-blog ol { list-style: decimal; }
+.prose-blog li { margin: 0.25em 0; }
+.prose-blog a { color: #b98b2f; text-decoration: underline; text-decoration-color: rgba(210, 168, 74, .45); }
+.prose-blog a:hover { color: var(--color-primary); }
+.prose-blog mark { border-radius: 3px; padding: 0.05em 0.2em; }
+.prose-blog strong { font-weight: 700; }
+.prose-blog blockquote {
+  border-left: 3px solid #d2a84a;
+  padding-left: 1em;
+  margin: 1em 0;
+  color: #667085;
+  font-style: italic;
+}
+
+.admin-rich-text .ProseMirror { outline: none; min-height: 260px; }
+.admin-rich-text .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #9aa2b1;
+  float: left;
+  height: 0;
+  pointer-events: none;
 }

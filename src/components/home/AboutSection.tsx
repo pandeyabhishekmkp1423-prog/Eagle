@@ -17,7 +17,7 @@ export default function AboutSection() {
               className="w-full h-[450px] object-cover rounded-sm hover:scale-105 transition-all duration-700"
               loading="lazy"
             />
-            <div className="absolute bottom-8 left-8 right-8 bg-primary/95 backdrop-blur-md p-6 rounded-none border-l-4 border-gold text-white shadow-lg text-left">
+            <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/15 bg-primary/50 p-6 text-white shadow-lg backdrop-blur-xl text-left">
               <span className="text-gold font-display text-2xl font-black block">150+ CHECKS</span>
               <span className="text-[10px] text-gray-300 font-mono tracking-widest uppercase mt-1 block">Rigorous structural audit parameters executed daily</span>
             </div>

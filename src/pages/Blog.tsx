@@ -1,28 +1,31 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import SEO from '../components/SEO';
-import { BLOG_POSTS } from '../data';
+import { useBlogPosts } from '../hooks/useBlogPosts';
+import { sanitizeHtml } from '../lib/sanitize';
+import { BlogPost } from '../types';
 import { Calendar, User, Clock, ArrowRight, X, Sparkles, AlertCircle } from 'lucide-react';
 
 export default function Blog() {
+  const { posts } = useBlogPosts();
   const [filter, setFilter] = useState('All');
-  const [activePost, setActivePost] = useState<typeof BLOG_POSTS[0] | null>(null);
+  const [activePost, setActivePost] = useState<BlogPost | null>(null);
   const location = useLocation();
 
   // Handle hash scrolling to open full post instantly
   useEffect(() => {
     if (location.hash) {
       const postId = location.hash.slice(1);
-      const post = BLOG_POSTS.find((p) => p.id === postId);
+      const post = posts.find((p) => p.id === postId);
       if (post) {
         setActivePost(post);
       }
     }
-  }, [location]);
+  }, [location, posts]);
 
   const categories = ['All', 'Local Bylaws', 'Engineering Superiority', 'Home Building Guide'];
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
+  const filteredPosts = posts.filter((post) => {
     if (filter === 'All') return true;
     return post.category === filter;
   });
@@ -200,11 +203,10 @@ export default function Blog() {
                 "{activePost.excerpt}"
               </p>
 
-              <div className="text-xs sm:text-sm text-gray-medium leading-relaxed font-sans font-light flex flex-col gap-4">
-                {activePost.content.split('\n\n').map((paragraph, pIdx) => (
-                  <p key={pIdx}>{paragraph}</p>
-                ))}
-              </div>
+              <div
+                className="prose-blog text-xs sm:text-sm text-gray-medium leading-relaxed font-sans font-light"
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(activePost.content) }}
+              />
 
               {/* Technical Disclaimer Footer block */}
               <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 flex gap-3.5 items-start mt-4">

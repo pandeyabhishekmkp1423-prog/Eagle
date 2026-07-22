@@ -41,7 +41,7 @@ export default function About() {
               For years, construction in Gurugram and Manesar was managed by unorganized local labor contractors. Projects routinely exceeded schedules, and raw material quality was unmonitored.
             </p>
             <p className="text-xs sm:text-sm text-gray-medium leading-relaxed font-sans font-light">
-              We established **Eagle Tiger Fabb & Infra** to bring professional corporate controls to residential building. We employ fully qualified graduate civil engineers, implement strict concrete slump testing, and bind our contracts to complete financial transparency. We believe your dream home shouldn't suffer from unvetted raw materials or budget escalations.
+              We established <strong className="text-primary font-bold">Eagle Tiger Fabb & Infra</strong> to bring professional corporate controls to residential building. We employ fully qualified graduate civil engineers, implement strict concrete slump testing, and bind our contracts to complete financial transparency. We believe your dream home shouldn't suffer from unvetted raw materials or budget escalations.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 border-t border-gray-light pt-8 mt-2">

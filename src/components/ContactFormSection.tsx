@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquare, ShieldCheck, AlertCircle } from 'lucide-react';
-
-const W3FORMS_ENDPOINT = 'https://api.w3forms.com/submit';
-const W3FORMS_ACCESS_KEY = import.meta.env.VITE_W3FORMS_ACCESS_KEY as string | undefined;
+import { apiFetch, ApiError } from '../lib/api';
 
 export default function ContactFormSection() {
   const [formData, setFormData] = useState({
@@ -22,36 +20,15 @@ export default function ContactFormSection() {
     e.preventDefault();
     setSubmitted(false);
     setSubmissionError('');
-
-    if (!W3FORMS_ACCESS_KEY) {
-      setSubmissionError('The contact form is not configured yet. Please email eagletigerinfra@gmail.com directly.');
-      return;
-    }
-
     setLoading(true);
 
     try {
-      const payload = new FormData(e.currentTarget);
-      payload.set('access_key', W3FORMS_ACCESS_KEY);
-      payload.set('subject', `New project enquiry from ${formData.name}`);
-      payload.set('from_name', 'Eagle Tiger Website');
-      payload.set('source_domain', 'eagletiger.in');
+      const honeypot = new FormData(e.currentTarget).get('company_website') as string;
 
-      const response = await fetch(W3FORMS_ENDPOINT, {
+      await apiFetch('/leads.php', {
         method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: payload,
+        body: JSON.stringify({ ...formData, source: 'contact_form', company_website: honeypot }),
       });
-
-      const result = await response.json() as {
-        success?: boolean;
-        message?: string;
-        error?: string;
-      };
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || result.message || 'Unable to submit your request.');
-      }
 
       setSubmitted(true);
       setFormData({
@@ -64,7 +41,7 @@ export default function ContactFormSection() {
       });
     } catch (error) {
       setSubmissionError(
-        error instanceof Error
+        error instanceof ApiError
           ? error.message
           : 'Unable to submit your request. Please try again or email us directly.'
       );

@@ -2,10 +2,12 @@ import SEO from '../components/SEO';
 import Hero from '../components/home/Hero';
 import AboutSection from '../components/home/AboutSection';
 import ServicesSection from '../components/home/ServicesSection';
+import WhyChooseSection from '../components/home/WhyChooseSection';
+import QualityAssuranceSection from '../components/home/QualityAssuranceSection';
+import CertificationsBand from '../components/home/CertificationsBand';
+import StatsSection from '../components/home/StatsSection';
 import ProcessSection from '../components/home/ProcessSection';
 import ProjectsSection from '../components/home/ProjectsSection';
-import WhyChooseSection from '../components/home/WhyChooseSection';
-import StatsSection from '../components/home/StatsSection';
 import TestimonialsSection from '../components/home/TestimonialsSection';
 import GallerySection from '../components/home/GallerySection';
 import GoogleReviewSection from '../components/home/GoogleReviewSection';
@@ -32,34 +34,40 @@ export default function Home() {
       {/* 3. Our Services */}
       <ServicesSection />
 
-      {/* 4. Construction Process Timeline */}
-      <ProcessSection />
-
-      {/* 5. Featured Projects portfolio grid */}
-      <ProjectsSection />
-
-      {/* 6. Why Choose Eagle Tiger */}
+      {/* 4. Why Choose Eagle Tiger */}
       <WhyChooseSection />
+
+      {/* 5. Branded 150-point quality assurance system */}
+      <QualityAssuranceSection />
+
+      {/* 6. Certifications & regulatory compliance strip */}
+      <CertificationsBand />
 
       {/* 7. Statistics corporate counter */}
       <StatsSection />
 
-      {/* 8. Glassmorphic Testimonials slider */}
+      {/* 8. Construction Process Timeline */}
+      <ProcessSection />
+
+      {/* 9. Featured Projects portfolio grid */}
+      <ProjectsSection />
+
+      {/* 10. Glassmorphic Testimonials slider */}
       <TestimonialsSection />
 
-      {/* 9. Portfolio Masonry Gallery */}
+      {/* 11. Portfolio Masonry Gallery */}
       <GallerySection />
 
-      {/* 10. Verified Google Reviews section */}
+      {/* 12. Verified Google Reviews section */}
       <GoogleReviewSection />
 
-      {/* 11. FAQ Accordion panel */}
+      {/* 13. FAQ Accordion panel */}
       <FAQSection />
 
-      {/* 12. Blog updates summaries */}
+      {/* 14. Blog updates summaries */}
       <BlogPreviewSection />
 
-      {/* 13. Reusable Split Contact and Map Section */}
+      {/* 15. Reusable Split Contact and Map Section */}
       <ContactFormSection />
     </div>
   );
